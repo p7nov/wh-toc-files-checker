@@ -11,12 +11,16 @@ fun main(args: Array<String>) {
   println("Done")
   println("Getting toc from .tree file")
   val toc = getTocAsList(args[0]+ args[1])
-  println("Done")
+  println("Done\n...")
 
   val missedTopics = topics - toc
-  println("...\nThe following ${missedTopics.count()} files from topics/ are not present in TOC:")
-  var i = 1
-  for(topic in missedTopics.sorted()) println("${i++}. $topic")
+  if (missedTopics.size > 0) {
+    println("The following ${missedTopics.count()} files from topics/ are not present in TOC:")
+    var i = 1
+    for(topic in missedTopics.sorted()) println("${i++}. $topic")
+  } else {
+    println("All files from topics/ are present in TOC.")
+  }
 }
 
 fun getTopicList(path: String): List<String> {
