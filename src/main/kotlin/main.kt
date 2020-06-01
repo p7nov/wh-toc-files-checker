@@ -17,7 +17,7 @@ fun main(args: Array<String>) {
   if (missedTopics.isNotEmpty()) {
     println("The following ${missedTopics.count()} files from topics/ are not present in TOC:")
     var i = 1
-    for(topic in missedTopics.sorted()) println("${i++}. $topic")
+    for (topic in missedTopics.sorted()) println("${i++}. $topic")
   } else {
     println("All files from topics/ are present in TOC.")
   }
@@ -39,7 +39,6 @@ fun getTocAsList(treePath: String): List<String> {
   for (i in 0 until tocElements.length) {
     val item = tocElements.item(i)
     if (item.getNodeType().equals(Node.ELEMENT_NODE)) {
-      //println(item.attributes.getNamedItem("id")?.nodeValue)
       val idAttr = item.attributes.getNamedItem("id")
       idAttr ?.let { toc.add(idAttr.nodeValue)}
     }
@@ -49,11 +48,8 @@ fun getTocAsList(treePath: String): List<String> {
 
 fun readXmlToc(treePath: String): Document {
   val xmlFile = File("$treePath")
-
   val dbFactory = DocumentBuilderFactory.newInstance()
   val dBuilder = dbFactory.newDocumentBuilder()
   val xmlInput = InputSource(StringReader(xmlFile.readText()))
-  val doc = dBuilder.parse(xmlInput)
-
-  return doc
+  return dBuilder.parse(xmlInput)
 }
