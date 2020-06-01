@@ -14,7 +14,7 @@ fun main(args: Array<String>) {
   println("Done\n...")
 
   val missedTopics = topics - toc
-  if (missedTopics.size > 0) {
+  if (missedTopics.isNotEmpty()) {
     println("The following ${missedTopics.count()} files from topics/ are not present in TOC:")
     var i = 1
     for(topic in missedTopics.sorted()) println("${i++}. $topic")
