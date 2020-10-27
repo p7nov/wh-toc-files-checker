@@ -47,7 +47,7 @@ fun getTocAsList(treePath: String): List<String> {
 }
 
 fun readXmlToc(treePath: String): Document {
-  val xmlFile = File("$treePath")
+  val xmlFile = File(treePath)
   val dbFactory = DocumentBuilderFactory.newInstance()
   val dBuilder = dbFactory.newDocumentBuilder()
   val xmlInput = InputSource(StringReader(xmlFile.readText()))
